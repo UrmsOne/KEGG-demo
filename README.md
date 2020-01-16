@@ -4,24 +4,27 @@
 * R 3.6.2
 ## 运行
 ### 通过RGui运行
-* git clone ...
-* 设置运行路径：setwd("C:\\Users\\urmsone\\Desktop\\KEGG-demo")
+* `git clone https://github.com/UrmsOne/KEGG-demo.git`
+* 设置运行路径：setwd("xxx")，例如`setwd("C:\\Users\\urmsone\\Desktop\\KEGG-demo")`
 * 安装依赖：
-    * source("requirements.R")
-    * init()
+    * `source("requirements.R")`
+    * `init()`
 * 运行画图脚本：
-    * source("shell/clusterProfilerKEGGShell.R")
-    * clusterProfilerKEGGShell(pwd="C:\\Users\\urmsone\\Desktop\\KEGG-demo",output_path="output")
-
+    * `source("shell/clusterProfilerKEGGShell.R")`
+    * `clusterProfilerKEGGShell(pwd="C:\\Users\\urmsone\\Desktop\\KEGG-demo",output_path="output")`
+      * output_path为图片的输出路径
 
 ### 命令行方式运行
-* git clone ...
-* cd XXX
-* Rscript cmd/main.R 
+* `git clone https://github.com/UrmsOne/KEGG-demo.git`
+* `cd KEGG-demo`
+* `Rscript cmd/main.R -p  C:\\Users\\urmsone\\Desktop\\KEGG-demo -o output`
 
 ## 报错解决
 ### Error in readPNG(paste(kegg.dir, "/", pathway.name, ".png", sep = "")) : libpng error: Read Error
+
 原因：可能是因为网络问题导致图片hasxxx.png的信息下载不完整，在读取时报错。可对照截图。
+
+
 解决：添加异常处理机制，在出现error的时候重新执行该命令，控制最大retry的次数即可。（比较暴力的解决方案）
 
 ### Info: Writing image file hsa04215.pathview.png Info: some node width is different from others, and hence adjusted! Error in img[pidx[i, 3]:pidx[i, 4], sel.px, 1:3] : 只有负下标里才能有零
